@@ -1,0 +1,3 @@
+---
+providerRegex: ^(talos-k8s-server-1|talos-k8s-server-2|talos-k8s-server-3)$
+bypassDnsResolution: true

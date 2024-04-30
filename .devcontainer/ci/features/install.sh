@@ -7,6 +7,8 @@ apk add --no-cache \
     py3-pip moreutils jq git iputils openssh-client \
     starship fzf fish
 
+sudo apk add openssl
+
 apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
         age helm kubectl sops
