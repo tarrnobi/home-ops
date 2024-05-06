@@ -30,6 +30,13 @@ spec:
       enabled: true
     cleanPrometheusOperatorObjectNames: true
     prometheus:
+      ingress:
+        enabled: true
+        ingressClassName: internal
+        pathType: Prefix
+        hosts:
+          - "prometheus.${SECRET_DOMAIN}"
+
       prometheusSpec:
         retention: 24h
         resources:
