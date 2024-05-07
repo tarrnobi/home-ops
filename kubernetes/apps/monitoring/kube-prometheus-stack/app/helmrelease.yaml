@@ -45,3 +45,10 @@ spec:
             memory: 200Mi
     nodeExporter:
       enabled: true
+    grafana:
+      ingress:
+      enabled: true
+      ingressClassName: internal
+      pathType: Prefix
+      hosts:
+        - "grafana.${SECRET_DOMAIN}"
