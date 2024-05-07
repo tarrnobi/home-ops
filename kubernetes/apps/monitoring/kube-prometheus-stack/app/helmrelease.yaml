@@ -47,8 +47,8 @@ spec:
       enabled: true
     grafana:
       ingress:
-      enabled: true
-      ingressClassName: internal
-      pathType: Prefix
-      hosts:
+        enabled: true
+        ingressClassName: internal
+        pathType: Prefix
+        hosts:
         - "grafana.${SECRET_DOMAIN}"
