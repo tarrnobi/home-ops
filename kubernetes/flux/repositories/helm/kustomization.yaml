@@ -5,6 +5,7 @@ resources:
   - ./1password.yaml
   - ./bjw-s.yaml
   - ./cilium.yaml
+  - ./cloudnative-pg.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
   - ./ingress-nginx.yaml
