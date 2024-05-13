@@ -33,7 +33,7 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: postgres-operator
-  path: ./kubernetes/apps/database/postgres/cluster
+  path: ./kubernetes/apps/database/postgres/clusters
   prune: true
   sourceRef:
     kind: GitRepository
