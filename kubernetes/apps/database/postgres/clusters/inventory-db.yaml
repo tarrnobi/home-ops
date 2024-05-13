@@ -1,0 +1,52 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: inventory-db
+spec:
+  instances: 1
+  storage:
+    size: 10Gi
+  resources:
+    requests:
+       cpu: 0.5
+       limits: 4Gi
+  # Handle Rollout Upgrades Automatically:
+  primaryUpdateStrategy: unsupervised
+  # Enable Super User Access for proper db recovery
+  enableSuperuserAccess: true
+  superuserSecret:
+    name: postgres-secrets
+  monitoring:
+    enablePodMonitor: true
+    # Ref: https://github.com/cloudnative-pg/cloudnative-pg/issues/2501
+    podMonitorMetricRelabelings:
+      - { sourceLabels: ["cluster"], targetLabel: cnpg_cluster, action: replace }
+      - { regex: cluster, action: labeldrop }
+  # AWS Backup Settings
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore: &barmanObjectStore
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
+      destinationPath: s3://ronin-database-backups/inventory-dev/
+      s3Credentials:
+        accessKeyId:
+          name: postgres-secrets
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: postgres-secrets
+          key: AWS_ACCESS_SECRET
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: daily-backup
+spec:
+  schedule: "@daily"
+  backupOwnerReference: self
+  cluster: 
+    name: inventory-db
+  immediate: true
