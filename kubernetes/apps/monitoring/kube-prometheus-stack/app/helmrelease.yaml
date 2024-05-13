@@ -35,7 +35,7 @@ spec:
         ingressClassName: internal
         pathType: Prefix
         hosts:
-          - "prometheus.${SECRET_DOMAIN}"
+          - "prometheus.dev.${SECRET_DOMAIN}"
 
       prometheusSpec:
         retention: 24h
@@ -51,4 +51,4 @@ spec:
         ingressClassName: internal
         pathType: Prefix
         hosts:
-        - "grafana.${SECRET_DOMAIN}"
+        - "grafana.dev.${SECRET_DOMAIN}"
