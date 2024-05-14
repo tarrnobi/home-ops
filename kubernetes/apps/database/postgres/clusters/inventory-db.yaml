@@ -11,7 +11,8 @@ spec:
   resources:
     requests:
        cpu: 0.5
-       limits: 4Gi
+    limits: 
+      memory: 4Gi
   # Handle Rollout Upgrades Automatically:
   primaryUpdateStrategy: unsupervised
   # Enable Super User Access for proper db recovery
@@ -28,21 +29,21 @@ spec:
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
-  # backup:
-  #   retentionPolicy: 30d
-  #   barmanObjectStore: &barmanObjectStore
-  #     data:
-  #       compression: bzip2
-  #     wal:
-  #       compression: bzip2
-  #     destinationPath: s3://ronin-database-backups/inventory-dev/
-  #     s3Credentials:
-  #       accessKeyId:
-  #         name: postgres-secrets
-  #         key: AWS_ACCESS_KEY_ID
-  #       secretAccessKey:
-  #         name: postgres-secrets
-  #         key: AWS_ACCESS_SECRET
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore: &barmanObjectStore
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
+      destinationPath: s3://ronin-database-backups/inventory-dev/
+      s3Credentials:
+        accessKeyId:
+          name: postgres-secrets
+          key: AWS_ACCESS_KEY_ID
+        secretAccessKey:
+          name: postgres-secrets
+          key: AWS_ACCESS_SECRET
 # ---
 # apiVersion: postgresql.cnpg.io/v1
 # kind: ScheduledBackup
