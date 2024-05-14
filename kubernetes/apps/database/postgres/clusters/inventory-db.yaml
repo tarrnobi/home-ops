@@ -40,17 +40,17 @@ spec:
         secretAccessKey:
           name: postgres-secrets
           key: AWS_ACCESS_SECRET
----
-apiVersion: postgresql.cnpg.io/v1
-kind: ScheduledBackup
-metadata:
-  name: daily-backup
-spec:
-  schedule: "@daily"
-  backupOwnerReference: self
-  cluster: 
-    name: inventory-db
-  immediate: true
+# ---
+# apiVersion: postgresql.cnpg.io/v1
+# kind: ScheduledBackup
+# metadata:
+#   name: daily-backup
+# spec:
+#   schedule: "@daily"
+#   backupOwnerReference: self
+#   cluster: 
+#     name: inventory-db
+#   immediate: true
 
 ---
 apiVersion: v1
