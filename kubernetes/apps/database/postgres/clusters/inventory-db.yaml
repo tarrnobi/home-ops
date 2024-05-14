@@ -5,9 +5,9 @@ metadata:
   name: inventory-db
 spec:
   instances: 1
-  storage:
-    size: 10Gi
-    storageClass: openebs-hostpath
+  # storage:
+  #   size: 10Gi
+  #   storageClass: openebs-hostpath
   resources:
     requests:
        cpu: 0.5
