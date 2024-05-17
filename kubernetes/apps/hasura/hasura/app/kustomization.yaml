@@ -5,4 +5,5 @@ resources:
   - ./configmap.yaml
   - ./postgres.yaml
   - ./graphqlengine.yaml
+  - ./ingress.yaml
   

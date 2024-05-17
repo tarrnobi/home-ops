@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hasura-graphql-engine
+  labels:
+    app: hasura-graphql-engine
+spec:
+  ingressClassName: internal
+  rules:
+  - host: graphql.dev.${SECRET_DOMAIN}
+    http:
+      paths:
+      - backend:
+          service:
+            name: hasura-graphql-engine
+            port:
+              number: 8080
+        pathType: Prefix
+        path: /
