@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hasura-configs
+data:
+  HASURA_GRAPHQL_ENABLE_CONSOLE: "true"

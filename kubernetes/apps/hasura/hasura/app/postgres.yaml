@@ -1,0 +1,69 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hasura-postgres-data
+  labels:
+    app: hasura-postgres
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+      storageClass: openebs-hostpath
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hasura-postgres
+  labels:
+    app: hasura-postgres
+spec:
+  selector:
+    matchLabels:
+      app: hasura-postgres
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+      labels:
+        app: hasura-postgres
+    spec:
+      volumes:
+        - name: postgres-data  
+          persistentVolumeClaim:
+            claimName: hasura-postgres-data
+      initContainers:
+      containers:
+        - name: postgres
+          image: postgres:15
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: postgres
+              containerPort: 5432
+              protocol: TCP
+          volumeMounts:       
+            - name: postgres-data
+              mountPath: "/var/lib/postgresql/data"
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: POSTGRES_USER
+                  name: hasura-secrets
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  key: POSTGRES_DB
+                  name: hasura-secrets
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: POSTGRES_PASSWORD
+                  name: hasura-secrets
