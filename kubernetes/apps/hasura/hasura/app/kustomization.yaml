@@ -4,4 +4,5 @@ resources:
   - ./externalsecret.yaml
   - ./configmap.yaml
   - ./postgres.yaml
+  - ./graphqlengine.yaml
   
