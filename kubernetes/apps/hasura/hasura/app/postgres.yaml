@@ -11,7 +11,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
-      storageClass: openebs-hostpath
+  storageClassName: openebs-hostpath
 
 ---
 apiVersion: apps/v1
