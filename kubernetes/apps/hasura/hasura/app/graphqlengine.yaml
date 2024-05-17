@@ -77,6 +77,17 @@ spec:
                 secretKeyRef:
                   key: HASURA_GRAPHQL_ADMIN_SECRET
                   name: hasura-secrets
+            # Custom Env Variables
+            - name: EVENTS_GRAPHQL_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  key: GRAPHQL_ENDPOINT
+                  name: hasura-configs
+            - name: EVENTS_ADMIN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: HASURA_GRAPHQL_ADMIN_SECRET
+                  name: hasura-secrets
             - name: POSTGRES_DB_FORECAST_RW
               valueFrom:
                 secretKeyRef:
