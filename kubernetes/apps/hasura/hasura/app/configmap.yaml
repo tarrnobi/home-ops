@@ -5,4 +5,4 @@ metadata:
   name: hasura-configs
 data:
   HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
-  GRAPHQL_ENDPOINT: "http://graphql.dev.roninds.co.uk/v1/graphql"
+  GRAPHQL_ENDPOINT: "http://hasura-graphql-engine.hasura.svc.cluster.local:8080/v1/graphql"
