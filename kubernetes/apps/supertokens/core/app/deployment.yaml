@@ -1,0 +1,102 @@
+---
+# Source: supertokens/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supertokens-core
+  labels:
+    app.kubernetes.io/name: supertokens
+    app.kubernetes.io/instance: supertokens-core
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: supertokens
+      app.kubernetes.io/instance: supertokens-core
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: supertokens
+        app.kubernetes.io/instance: supertokens-core
+    spec:
+      serviceAccountName: supertokens-core  
+      containers:
+        - name: supertokens 
+          image: "supertokens/supertokens-postgresql:7.0"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: "SUPERTOKENS_PORT"
+              value: "3567"
+            - name: "ACCESS_TOKEN_VALIDITY"
+              value: "3600"
+            - name: "ACCESS_TOKEN_BLACKLISTING"
+              value: "false"
+            - name: "ACCESS_TOKEN_SIGNING_KEY_DYNAMIC"
+              value: "true"
+            - name: "ACCESS_TOKEN_SIGNING_KEY_UPDATE_INTERVAL"
+              value: "168"
+            - name: "REFRESH_TOKEN_VALIDITY"
+              value: "144000"
+            - name: "PASSWORD_RESET_TOKEN_LIFETIME"
+              value: "3600000"
+            - name: "EMAIL_VERIFICATION_TOKEN_LIFETIME"
+              value: "86400000"
+            - name: "PASSWORDLESS_MAX_CODE_INPUT_ATTEMPTS"
+              value: "5"
+            - name: "PASSWORDLESS_CODE_LIFETIME"
+              value: "900000"
+            - name: "BASE_PATH"
+              value: ""
+            - name: "DISABLE_TELEMETRY"
+              value: "false"
+            - name: "MAX_SERVER_POOL_SIZE"
+              value: "10"
+            - name: POSTGRESQL_CONNECTION_URI
+              valueFrom:
+                secretKeyRef:
+                  key: uri
+                  name: supertokens-core-db-app
+            - name: API_KEYS
+              valueFrom:
+                secretKeyRef:
+                  key: API_KEYS
+                  name: supertokens-core-secrets
+          ports:
+            - name: http
+              containerPort: 3567
+              protocol: TCP
+          livenessProbe: 
+            failureThreshold: 3
+            httpGet:
+              path: /hello
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 30
+          readinessProbe: 
+            failureThreshold: 3
+            httpGet:
+              path: /hello
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 30
+---
+# Source: supertokens/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: supertokens-core
+  labels: 
+    app.kubernetes.io/name: supertokens
+    app.kubernetes.io/instance: supertokens-core
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3567
+      targetPort: 3567
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: supertokens
+    app.kubernetes.io/instance: supertokens-core
