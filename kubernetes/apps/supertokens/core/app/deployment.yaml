@@ -1,4 +1,13 @@
 ---
+# Source: supertokens/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: supertokens-core
+  labels:
+    app.kubernetes.io/name: supertokens
+    app.kubernetes.io/instance: supertokens-core
+---
 # Source: supertokens/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
