@@ -21,8 +21,16 @@ spec:
       - name: supertokens-backend
         image: ghcr.io/ronin-cg/auth-backend:9757b5d
         imagePullPolicy: IfNotPresent
+        env:
+          - name: ST_CORE_URL
+            value: http://supertokens-core.supertokens.svc.cluster.local:3567
+          # - name: ST_BACKEND_API_URL
+          #   value: auth.dev.${SECRET_DOMAIN}
+          - name: ST_WEBSITE_URL
+            value: http://app.dev.${SECRET_DOMAIN}
       imagePullSecrets:
         - name: ghcr-login-secret
+
 ---
 apiVersion: v1
 kind: Service
