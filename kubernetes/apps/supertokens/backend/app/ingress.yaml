@@ -1,3 +1,6 @@
+# Create two ingress resources.
+# One for the public domain, which specifically disallows the "privileged" routes
+# One that is internally facing that allows all routes.
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -8,7 +11,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
 spec:
-  ingressClassName: internal
+  ingressClassName: external
   rules:
   - host: auth.dev.${SECRET_DOMAIN}
     http:
@@ -20,6 +23,26 @@ spec:
             name: dummy-backend
             port:
               number: 3001
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-backend
+            port:
+              number: 3001
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auth-backend-admin
+  labels:
+    app.kubernetes.io/name: auth-backend
+spec:
+  ingressClassName: internal
+  rules:
+  - host: auth-adm.dev.${SECRET_DOMAIN}
+    http:
+      paths:
       - path: /
         pathType: Prefix
         backend:
