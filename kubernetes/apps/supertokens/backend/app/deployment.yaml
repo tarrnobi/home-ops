@@ -21,6 +21,8 @@ spec:
       - name: supertokens-backend
         image: ghcr.io/ronin-cg/auth-backend:9757b5d
         imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+        - name: ghcr-login-secret
 ---
 apiVersion: v1
 kind: Service
