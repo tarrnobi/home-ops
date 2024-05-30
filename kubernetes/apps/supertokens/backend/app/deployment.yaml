@@ -24,10 +24,8 @@ spec:
         env:
           - name: ST_CORE_URL
             value: http://supertokens-core.supertokens.svc.cluster.local:3567
-          # - name: ST_BACKEND_API_URL
-          #   value: auth.dev.${SECRET_DOMAIN}
           - name: ST_WEBSITE_URL
-            value: http://app.dev.${SECRET_DOMAIN}
+            value: http://app-dev.${SECRET_DOMAIN}
           - name: ST_API_KEY
             valueFrom:
               secretKeyRef:
