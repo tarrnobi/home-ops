@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: supertokens-backend
-        image: fluxcd.io.io/supertokens-backend:9757b5d
+        image: fluxcd.io/supertokens-backend:9757b5d
         imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
