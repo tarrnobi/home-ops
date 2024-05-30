@@ -10,3 +10,6 @@ spec:
   provider: generic
   secretRef: 
     name: ghcr-login-secret
+  accessFrom:
+    namespaceSelectors:
+      - matchLabels: {}
