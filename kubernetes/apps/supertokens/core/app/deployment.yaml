@@ -31,7 +31,7 @@ spec:
       serviceAccountName: supertokens-core  
       containers:
         - name: supertokens 
-          image: "supertokens/supertokens-postgresql:7.0"
+          image: "supertokens/supertokens-postgresql:9.0.2"
           imagePullPolicy: IfNotPresent
           env:
             - name: "SUPERTOKENS_PORT"
