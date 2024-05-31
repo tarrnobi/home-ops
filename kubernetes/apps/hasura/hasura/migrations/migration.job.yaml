@@ -11,7 +11,6 @@ spec:
       containers:
         - name: hasura-migrations
           image: ghcr.io/ronin-cg/hasura-migrations:4398cdd
-          command: ["migrate", "apply", "--database-url", "postgres://hasura:hasura@hasura-postgres:5432/hasura"]
           env:
             - name: HASURA_GRAPHQL_ENDPOINT
               value: "http://hasura-graphql-engine.hasura.svc.cluster.local:8080"
