@@ -7,4 +7,4 @@ data:
   HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
   GRAPHQL_ENDPOINT: "http://hasura-graphql-engine.hasura.svc.cluster.local:8080/v1/graphql"
   HASURA_GRAPHQL_JWT_SECRET: |
-    {"jwk_url": "http://auth-backend.devpod.svc.cluster.local:3001/auth/jwt/jwks.json","header": {"type": "cookie", "name": "sAccessToken"}}
+    {"jwk_url": "https://auth-dev.roninds.co.uk/auth/jwt/jwks.json","header": {"type": "cookie", "name": "sAccessToken"}}
