@@ -19,4 +19,6 @@ spec:
                 secretKeyRef:
                   name: hasura-secrets
                   key: admin-secret
+      imagePullSecrets:
+        - name: ghcr-login-secret
   backoffLimit: 4
