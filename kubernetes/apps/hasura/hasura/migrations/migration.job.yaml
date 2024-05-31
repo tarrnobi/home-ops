@@ -18,7 +18,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: hasura-secrets
-                  key: admin-secret
+                  key: HASURA_GRAPHQL_ADMIN_SECRET
       imagePullSecrets:
         - name: ghcr-login-secret
   backoffLimit: 4
