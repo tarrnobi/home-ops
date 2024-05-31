@@ -64,6 +64,11 @@ spec:
                 configMapKeyRef:
                   key: HASURA_GRAPHQL_ENABLE_CONSOLE
                   name: hasura-configs
+            - name: HASURA_GRAPHQL_JWT_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  key: HASURA_GRAPHQL_JWT_SECRET
+                  name: hasura-configs
             - name: HASURA_GRAPHQL_CORS_DOMAIN
               value: "*"
             # Self-hosted control plane configurations for Hasura Enterprise classic
