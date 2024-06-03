@@ -26,6 +26,8 @@ spec:
             value: http://supertokens-core.supertokens.svc.cluster.local:3567
           - name: ST_WEBSITE_URL
             value: https://app-dev.${SECRET_DOMAIN}
+          - name: ST_BACKEND_API_URL
+            value: https://auth-dev.$SECRET_DOMAIN}
           - name: ST_API_KEY
             valueFrom:
               secretKeyRef:
