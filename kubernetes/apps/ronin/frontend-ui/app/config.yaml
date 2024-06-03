@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: ronin-ui-configs
 data:
-  REACT_APP_API_URL: https://auth-dev.${SECRET_DOMAIN}.co.uk
+  REACT_APP_API_URL: https://auth-dev.${SECRET_DOMAIN}
   REACT_APP_WEBSITE_URL: https://app-dev.${SECRET_DOMAIN}
   REACT_APP_GRAPHQL_URL: https://graphql-dev.${SECRET_DOMAIN}/v1/graphql
