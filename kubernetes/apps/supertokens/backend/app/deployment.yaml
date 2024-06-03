@@ -27,7 +27,7 @@ spec:
           - name: ST_WEBSITE_URL
             value: https://app-dev.${SECRET_DOMAIN}
           - name: ST_BACKEND_API_URL
-            value: https://auth-dev.$SECRET_DOMAIN}
+            value: https://auth-dev.${SECRET_DOMAIN}
           - name: ST_API_KEY
             valueFrom:
               secretKeyRef:
