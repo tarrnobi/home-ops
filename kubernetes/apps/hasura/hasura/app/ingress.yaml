@@ -4,8 +4,10 @@ metadata:
   name: hasura-graphql-engine
   labels:
     app: hasura-graphql-engine
+  annotations:
+    external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
 spec:
-  ingressClassName: internal
+  ingressClassName: external
   rules:
   - host: graphql-dev.${SECRET_DOMAIN}
     http:
