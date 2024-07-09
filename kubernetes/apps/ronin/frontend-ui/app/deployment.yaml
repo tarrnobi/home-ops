@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: ronin-ui
-        image: ghcr.io/ronin-cg/frontend-ui:caf175a
+        image: ghcr.io/ronin-cg/frontend-ui:5d7ffbd
         imagePullPolicy: IfNotPresent
         ports:
           - name: http
