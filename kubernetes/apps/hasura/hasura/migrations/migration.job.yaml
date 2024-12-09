@@ -10,7 +10,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: hasura-migrations
-          image: ghcr.io/ronin-cg/hasura-migrations:509f4bd
+          image: ghcr.io/ronin-cg/hasura-migrations:835c31c
           env:
             - name: HASURA_GRAPHQL_ENDPOINT
               value: "http://hasura-graphql-engine.hasura.svc.cluster.local:8080"
