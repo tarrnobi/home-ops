@@ -7,3 +7,4 @@ data:
   REACT_APP_WEBSITE_URL: https://app-dev.${SECRET_DOMAIN}
   REACT_APP_GRAPHQL_URL: https://graphql-dev.${SECRET_DOMAIN}/v1/graphql
   REACT_APP_FRONTEND_DOMAIN: ${SECRET_DOMAIN}
+  NGROK_HOST: https://app-dev.${SECRET_DOMAIN}

@@ -43,6 +43,12 @@ spec:
           timeoutSeconds: 1
           successThreshold: 1
           failureThreshold: 3
+        env:
+          - name: AMAZON_APP_ID
+            valueFrom:
+              secretKeyRef:
+                name: ronin-ui-secrets
+                key: AMAZON_APP_ID
         envFrom:
           - configMapRef:
               name: ronin-ui-configs
