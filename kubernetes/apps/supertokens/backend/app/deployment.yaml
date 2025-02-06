@@ -33,9 +33,27 @@ spec:
               secretKeyRef:
                 name: supertokens-backend-secrets
                 key: API_KEY
+          - name: GRAPHQL_ENDPOINT
+            value: https://graphql-dev.${SECRET_DOMAIN}
+          - name: GRAPHQL_ADMIN_KEY
+            valueFrom:
+              secretKeyRef:
+                name: supertokens-backend-secrets
+                key: GRAPHQL_ADMIN_KEY
+          - name: AMAZON_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: supertokens-backend-secrets
+                key: AMAZON_CLIENT_ID
+          - name: AMAZON_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: supertokens-backend-secrets
+                key: AMAZON_CLIENT_SECRET
+          - name: AMAZON_REDIRECT_URI
+            value: https://app-dev.${SECRET_DOMAIN}
       imagePullSecrets:
         - name: ghcr-login-secret
-
 ---
 apiVersion: v1
 kind: Service
