@@ -108,3 +108,9 @@ spec:
                 secretKeyRef:
                   key: INVENTORY_DB_URI
                   name: hasura-db-connections
+            # used for grraph endpoints over auth/user routes
+            - name: ST_AUTH_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: ST_AUTH_URL
+                  name: hasura-configs

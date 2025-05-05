@@ -8,3 +8,4 @@ data:
   GRAPHQL_ENDPOINT: "http://hasura-graphql-engine.hasura.svc.cluster.local:8080/v1/graphql"
   HASURA_GRAPHQL_JWT_SECRET: |
     {"jwk_url": "https://auth-dev.roninds.co.uk/auth/jwt/jwks.json","header": {"type": "cookie", "name": "st-access-token"}}
+  ST_AUTH_URL: "https://auth-dev.${SECRET_DOMAIN}"
