@@ -34,7 +34,7 @@ spec:
                 name: supertokens-backend-secrets
                 key: API_KEY
           - name: ST_COOKIE_DOMAIN
-            value: .%{SECRET_DOMAIN}
+            value: .${SECRET_DOMAIN}
           - name: GRAPHQL_ENDPOINT
             value: https://graphql-dev.${SECRET_DOMAIN}
           - name: GRAPHQL_ADMIN_KEY
