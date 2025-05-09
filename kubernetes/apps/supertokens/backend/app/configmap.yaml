@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: supertoken-backend-configs
+data:
+  SMTP_HOST: smtp.resend.com
+  SMTP_PORT: 465
+  SMTP_FROM_EMAIL: "support@app.roninds.co.uk"
+  SMTP_FROM_NAME: "Ronin Support"
+  SMTP_SECURE: true
