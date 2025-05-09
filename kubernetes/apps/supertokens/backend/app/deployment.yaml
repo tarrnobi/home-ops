@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: supertokens-backend
-        image: ghcr.io/ronin-cg/auth-backend:e287986
+        image: ghcr.io/ronin-cg/auth-backend:ac38661
         imagePullPolicy: IfNotPresent
         env:
           - name: ST_CORE_URL
