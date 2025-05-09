@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: supertokens-backend
-        image: ghcr.io/ronin-cg/auth-backend:ac38661
+        image: ghcr.io/ronin-cg/auth-backend:3e29200
         imagePullPolicy: IfNotPresent
         env:
           - name: ST_CORE_URL
@@ -33,6 +33,8 @@ spec:
               secretKeyRef:
                 name: supertokens-backend-secrets
                 key: API_KEY
+          - name: ST_COOKIE_DOMAIN
+            value: .%{SECRET_DOMAIN}
           - name: GRAPHQL_ENDPOINT
             value: https://graphql-dev.${SECRET_DOMAIN}
           - name: GRAPHQL_ADMIN_KEY
