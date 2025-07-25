@@ -89,6 +89,22 @@ spec:
               secretKeyRef:
                 name: supertokens-backend-secrets
                 key: SMTP_PASSWORD
+          # AWS Env Vars
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: supertokens-backend-secrets
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: supertokens-backend-secrets
+                key: AWS_SECRET_ACCESS_KEY
+          - name: AWS_REGION
+            valueFrom:
+              configMapKeyRef:
+                name: supertoken-backend-configs
+                key: AWS_REGION
           # Inventory DB Env Vars
           - name: INVENTORY_DB_HOST
             valueFrom:

@@ -9,10 +9,14 @@ data:
   SMTP_FROM_EMAIL: "support@app.roninds.co.uk"
   SMTP_FROM_NAME: "Ronin Support"
   SMTP_SECURE: "true"
+  # AWS Env Vars
+  AWS_REGION: "eu-west-2"
+  # Ducklake Postgres Env Vars
   DUCKLAKE_DB_HOST: "datalake-db-rw.database"
   DUCKLAKE_DB_PORT: "5432"
   DUCKLAKE_DB_NAME: "app"
   DUCKLAKE_DB_USER: "app"
+  # Inventory DB Postgres Env Vars
   INVENTORY_DB_HOST: "inventory-db-rw.database"
   INVENTORY_DB_PORT: "5432"
   INVENTORY_DB_NAME: "app"
