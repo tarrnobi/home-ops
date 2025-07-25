@@ -89,7 +89,58 @@ spec:
               secretKeyRef:
                 name: supertokens-backend-secrets
                 key: SMTP_PASSWORD
-
+          # Inventory DB Env Vars
+          - name: INVENTORY_DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: supertoken-backend-configs
+                key: INVENTORY_DB_HOST
+          - name: INVENTORY_DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: supertoken-backend-configs
+                key: INVENTORY_DB_PORT
+          - name: INVENTORY_DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: supertoken-backend-configs
+                key: INVENTORY_DB_NAME
+          - name: INVENTORY_DB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: supertoken-backend-configs
+                key: INVENTORY_DB_USER
+          - name: INVENTORY_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: supertokens-backend-secrets
+                key: INVENTORY_DB_PASSWORD
+          # Ducklake DB Env Vars
+          - name: DUCKLAKE_DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: supertoken-backend-configs
+                key: DUCKLAKE_DB_HOST
+          - name: DUCKLAKE_DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: supertoken-backend-configs
+                key: DUCKLAKE_DB_PORT
+          - name: DUCKLAKE_DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: supertoken-backend-configs
+                key: DUCKLAKE_DB_NAME
+          - name: DUCKLAKE_DB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: supertoken-backend-configs
+                key: DUCKLAKE_DB_USER
+          - name: DUCKLAKE_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: supertokens-backend-secrets
+                key: DUCKLAKE_DB_PASSWORD
       imagePullSecrets:
         - name: ghcr-login-secret
 ---
