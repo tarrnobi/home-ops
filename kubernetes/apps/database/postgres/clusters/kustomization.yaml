@@ -6,3 +6,4 @@ resources:
   - ./inventory-db.yaml
   - ./tenants-db.yaml
   - ./forecast-db.yaml
+  - ./datalake-db.yaml
