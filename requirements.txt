@@ -1,6 +1,6 @@
 bcrypt==4.3.0
 cloudflare==4.1.0
 email-validator==2.3.0
-makejinja==2.5.0
+makejinja==2.8.1
 netaddr==1.2.1
 passlib==1.7.4
