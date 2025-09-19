@@ -1,31 +1,29 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: cilium
 spec:
   interval: 30m
-  chart:
-    spec:
-      chart: cilium
-      version: 1.15.4
-      sourceRef:
-        kind: HelmRepository
-        name: cilium
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: cilium
   install:
     remediation:
-      retries: 3
+      retries: -1
   upgrade:
     cleanupOnFail: true
     remediation:
       retries: 3
   values:
     autoDirectNodeRoutes: true
+    bpf:
+      masquerade: true
+      # Ref: https://github.com/siderolabs/talos/issues/10002
+      hostLegacyRouting: true
     bgpControlPlane:
       enabled: true
-    bpf:
-      masquerade: false
     cgroup:
       automount:
         enabled: false
@@ -35,42 +33,18 @@ spec:
       name: ronin-dev
     cni:
       exclusive: false
-    containerRuntime:
-      integration: containerd
+    dashboards:
+      enabled: true      
+    #containerRuntime:
+    #  integration: containerd
     # NOTE: devices might need to be set if you have more than one active NIC on your hosts
     # devices: eno+ eth+
     endpointRoutes:
       enabled: true
+    envoy:
+      enabled: false
     hubble:
-      enabled: true
-      metrics:
-        enabled:
-          - dns:query
-          - drop
-          - tcp
-          - flow
-          - port-distribution
-          - icmp
-          - http
-        serviceMonitor:
-          enabled: true
-        dashboards:
-          enabled: true
-          annotations:
-            grafana_folder: Cilium
-      relay:
-        enabled: true
-        rollOutPods: true
-        prometheus:
-          serviceMonitor:
-            enabled: true
-      ui:
-        enabled: true
-        rollOutPods: true
-        ingress:
-          enabled: true
-          className: internal
-          hosts: ["hubble.${SECRET_DOMAIN}"]
+      enabled: false
     ipam:
       mode: kubernetes
     ipv4NativeRoutingCIDR: "${CLUSTER_CIDR}"
@@ -85,25 +59,23 @@ spec:
       mode: snat
     localRedirectPolicy: true
     operator:
-      replicas: 1
-      rollOutPods: true
-      prometheus:
-        enabled: true
-        serviceMonitor:
-          enabled: true
       dashboards:
         enabled: true
         annotations:
           grafana_folder: Cilium
+      prometheus:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+      replicas: 1
+      rollOutPods: true
+    pmtuDiscovery:
+      enabled: true
     prometheus:
       enabled: true
       serviceMonitor:
         enabled: true
         trustCRDsExist: true
-    dashboards:
-      enabled: true
-      annotations:
-        grafana_folder: Cilium
     rollOutCiliumPods: true
     routingMode: native
     securityContext:
@@ -116,6 +88,8 @@ spec:
           - IPC_LOCK
           - SYS_ADMIN
           - SYS_RESOURCE
+          - PERFMON
+          - BPF
           - DAC_OVERRIDE
           - FOWNER
           - SETGID
