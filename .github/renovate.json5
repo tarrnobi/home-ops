@@ -57,6 +57,15 @@
   "commitMessageSuffix": "",
   // package rules
   "packageRules": [
+    // Ronin specific
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/ronin-cg/frontend"],
+      "automerge": true,
+      "automergeType": "pr",
+      "schedule": ["at any time"],
+      "prPriority": 1
+    },
     // automerge
     {
       "description": ["Auto merge Github Actions"],
@@ -229,6 +238,7 @@
       "matchManagers": ["github-actions"],
       "addLabels": ["renovate/github-action"]
     }
+    
   ],
   // custom managers
   "customManagers": [
@@ -252,5 +262,14 @@
       ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
     }
-  ]
+  ],
+  // GHCR config for Ronin
+  "hostRules": [
+  {
+    "hostType": "docker",
+    "matchHost": "ghcr.io",
+    "username": "tarrnobi",  // the account that owns the PAT
+    "password": "{{ secrets.RENOVATE_RONIN_GHCR_TOKEN }}"
+  }
+]
 }
