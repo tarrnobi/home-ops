@@ -8,7 +8,7 @@ data:
   VITE_AMAZON_REDIRECT_URL: https://dev.${SECRET_DOMAIN}
   AMAZON_REDIRECT_URI: https://dev.${SECRET_DOMAIN}
   NODE_ENV: development
-  DATABASE_ENABLE_LOGGING: false
+  DATABASE_ENABLE_LOGGING: "false"
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret

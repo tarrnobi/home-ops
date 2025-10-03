@@ -82,7 +82,7 @@ spec:
         envFrom:
           - configMapRef:
               name: ronin-frontend-configs
-        imagePullSecrets:
+      imagePullSecrets:
         - name: ghcr-login-secret
 ---
 apiVersion: v1
