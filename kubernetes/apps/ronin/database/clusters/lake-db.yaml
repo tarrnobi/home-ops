@@ -6,7 +6,7 @@ metadata:
 spec:
   instances: 1
   storage:
-    size: 1Gi
+    size: 4Gi
     storageClass: openebs-hostpath
   resources:
     requests:
@@ -36,7 +36,7 @@ spec:
         compression: bzip2
       wal:
         compression: bzip2
-      destinationPath: s3://ronin-database-backups/auth-db-dev/
+      destinationPath: s3://ronin-database-backups/lake2-db-dev/
       s3Credentials:
         accessKeyId:
           name: postgres-secrets
@@ -61,5 +61,5 @@ spec:
       protocol: TCP
       targetPort: 5432
   selector:
-    cnpg.io/cluster: auth-db
+    cnpg.io/cluster: lake-db
     role: primary
