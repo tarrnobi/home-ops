@@ -61,5 +61,5 @@ spec:
       protocol: TCP
       targetPort: 5432
   selector:
-    cnpg.io/cluster: auth-db
+    cnpg.io/cluster: lake-db
     role: primary
