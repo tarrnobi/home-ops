@@ -6,6 +6,7 @@ metadata:
 data:
   VITE_ENVIRONMENT: development
   VITE_AMAZON_REDIRECT_URL: https://dev.${SECRET_DOMAIN}
+  AMAZON_REDIRECT_URI: https://dev.${SECRET_DOMAIN}
   NODE_ENV: development
   DATABASE_ENABLE_LOGGING: false
 
@@ -25,12 +26,36 @@ spec:
       remoteRef:
         key: AMAZON_SECRETS
         property: AMAZON_APP_ID
+
     - secretKey: AMAZON_CLIENT_ID
       remoteRef:
         key: AMAZON_SECRETS
         property: AMAZON_CLIENT_ID
+
     - secretKey: AMAZON_CLIENT_SECRET
       remoteRef:
         key: AMAZON_SECRETS
         property: AMAZON_CLIENT_SECRET
+
+    - secretKey: BETTER_AUTH_SECRET
+      remoteRef:
+        key: RONIN_MISC
+        property: BETTER_AUTH_SECRET
+
+    - secretKey: APP_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: RONIN_DB
+
+    - secretKey: AUTH_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: AUTH_DB
+        
+    - secretKey: LAKE_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: LAKE_DB
+   
+    
     

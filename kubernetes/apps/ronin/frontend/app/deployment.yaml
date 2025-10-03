@@ -49,6 +49,36 @@ spec:
               secretKeyRef:
                 name: ronin-frontend-secrets
                 key: VITE_AMAZON_APP_ID
+          - name: AMAZON_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: AMAZON_CLIENT_ID
+          - name: AMAZON_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: AMAZON_CLIENT_SECRET
+          - name: BETTER_AUTH_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: BETTER_AUTH_SECRET
+          - name: APP_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: APP_DATABASE_URL
+          - name: AUTH_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: AUTH_DATABASE_URL
+          - name: LAKE_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: LAKE_DATABASE_URL
         envFrom:
           - configMapRef:
               name: ronin-frontend-configs
