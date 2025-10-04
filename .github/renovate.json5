@@ -64,7 +64,8 @@
       "automerge": true,
       "automergeType": "pr",
       "schedule": ["at any time"],
-      "prPriority": 1
+      "prPriority": 1,
+      "versioning": "regex:^dev-[a-f0-9]{7,}$"
     },
     // automerge
     {
