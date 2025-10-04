@@ -1,0 +1,102 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ronin-frontend
+  labels:
+    app.kubernetes.io/name: ronin-frontend
+    app.kubernetes.io/instance: ronin-frontend
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ronin-frontend
+      app.kubernetes.io/instance: ronin-frontend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ronin-frontend
+        app.kubernetes.io/instance: ronin-frontend
+    spec:
+      containers:
+      - name: ronin-frontend
+        image: ghcr.io/ronin-cg/frontend:dev-bde02bf
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /zhealth
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /zhealth
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3
+        env:
+          - name: VITE_AMAZON_APP_ID
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: VITE_AMAZON_APP_ID
+          - name: AMAZON_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: AMAZON_CLIENT_ID
+          - name: AMAZON_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: AMAZON_CLIENT_SECRET
+          - name: BETTER_AUTH_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: BETTER_AUTH_SECRET
+          - name: APP_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: APP_DATABASE_URL
+          - name: AUTH_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: AUTH_DATABASE_URL
+          - name: LAKE_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: LAKE_DATABASE_URL
+        envFrom:
+          - configMapRef:
+              name: ronin-frontend-configs
+      imagePullSecrets:
+        - name: ghcr-login-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ronin-frontend
+  labels:
+    app.kubernetes.io/name: ronin-frontend
+spec:
+  selector:
+    app.kubernetes.io/name: ronin-frontend
+    app.kubernetes.io/instance: ronin-frontend
+  ports:
+    - name: http
+      protocol: TCP
+      port: 3000
+      targetPort: 80
