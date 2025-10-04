@@ -61,11 +61,12 @@
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/ronin-cg/frontend"],
+      "versioning": "loose",
+      "allowedVersions": "^dev-[a-f0-9]{7,}$",
       "automerge": true,
       "automergeType": "pr",
       "schedule": ["at any time"],
-      "prPriority": 1,
-      "versioning": "regex:^dev-[a-f0-9]{7,}$"
+      "prPriority": 1
     },
     // automerge
     {
