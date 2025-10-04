@@ -27,7 +27,7 @@ spec:
             protocol: TCP
         readinessProbe:
           httpGet:
-            path: /zhealth
+            path: /api/zhealth
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
@@ -36,7 +36,7 @@ spec:
           failureThreshold: 3
         livenessProbe:
           httpGet:
-            path: /zhealth
+            path: /api/zhealth
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
