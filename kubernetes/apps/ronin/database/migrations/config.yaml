@@ -1,0 +1,24 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: ronin-db-migration-secrets
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: ops-store
+  target:
+    name: ronin-db-migration-secrets
+  data:
+    - secretKey: APP_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: RONIN_DB
+    - secretKey: AUTH_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: AUTH_DB
+    - secretKey: LAKE_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: LAKE_DB

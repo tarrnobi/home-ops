@@ -3,19 +3,41 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app ronin-databases
+  name: ronin-databases
   namespace: flux-system
 spec:
-  targetNamespace: ronin
   commonMetadata:
     labels:
-      app.kubernetes.io/name: *app
+      app.kubernetes.io/name: ronin-databases
+  interval: 10m0s
   path: ./kubernetes/apps/ronin/database/clusters
   prune: true
+  retryInterval: 1m
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
-  wait: true
-  interval: 10m0s
-  retryInterval: 1m
+  targetNamespace: ronin
   timeout: 5m
+  wait: true
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ronin-db-migrations
+  namespace: flux-system
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: ronin-db-migrations
+  force: true
+  interval: 10m0s
+  path: ./kubernetes/apps/ronin/database/migrations
+  prune: true
+  retryInterval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  targetNamespace: ronin
+  timeout: 5m
+  wait: true
