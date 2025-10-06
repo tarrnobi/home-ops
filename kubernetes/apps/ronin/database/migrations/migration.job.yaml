@@ -1,0 +1,34 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    app.kubernetes.io/name: db-migrations
+  name: db-migrations
+spec:
+  backoffLimit: 4
+  template:
+    spec:
+      containers:
+      - name: hasura-migrations
+        image: ghcr.io/ronin-cg/db-migrations:1.0.0
+        env:
+          # TODO: Add Auth, lake, app db secrets here
+          - name: APP_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: APP_DATABASE_URL
+                name: ronin-db-migration-secrets
+          - name: AUTH_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: AUTH_DATABASE_URL
+                name: ronin-db-migration-secrets
+          - name: LAKE_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: LAKE_DATABASE_URL
+                name: ronin-db-migration-secrets
+      imagePullSecrets:
+        - name: ghcr-login-secret
+      restartPolicy: Never

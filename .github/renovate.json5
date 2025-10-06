@@ -60,7 +60,10 @@
     // Ronin specific
     {
       "matchDatasources": ["docker"],
-      "matchPackageNames": ["ghcr.io/ronin-cg/frontend"],
+      "matchPackageNames": [
+        "ghcr.io/ronin-cg/frontend", 
+        "ghcr.io/ronin-cg/db-migrations"
+      ],
       "versioning": "docker",
       "automerge": true,
       "automergeType": "pr",
