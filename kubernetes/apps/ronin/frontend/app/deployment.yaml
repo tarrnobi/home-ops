@@ -44,7 +44,7 @@ spec:
           successThreshold: 1
           failureThreshold: 3
         env:
-          - name: VITE_AMAZON_APP_ID
+          - name: AMAZON_APP_ID
             valueFrom:
               secretKeyRef:
                 name: ronin-frontend-secrets
