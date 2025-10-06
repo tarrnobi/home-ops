@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: hasura-migrations
-        image: ghcr.io/ronin-cg/db-migrations:1.0.0
+        image: ghcr.io/ronin-cg/db-migrations:1.0.6
         env:
           # TODO: Add Auth, lake, app db secrets here
           - name: APP_DATABASE_URL
