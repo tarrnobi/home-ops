@@ -10,7 +10,7 @@ spec:
   template:
     spec:
       containers:
-      - name: hasura-migrations
+      - name: ronin-db-migrations
         image: ghcr.io/ronin-cg/db-migrations:1.0.6
         env:
           # TODO: Add Auth, lake, app db secrets here
