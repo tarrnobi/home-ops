@@ -9,7 +9,7 @@ data:
   AMAZON_REDIRECT_URI: https://dev.${SECRET_DOMAIN}
   NODE_ENV: development
   DATABASE_ENABLE_LOGGING: "false"
-  BETTER_AUTH_URL: https://dev.${SECRET_DOMAIN}
+  VITE_BETTER_AUTH_URL: https://dev.${SECRET_DOMAIN}
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
