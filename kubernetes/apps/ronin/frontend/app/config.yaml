@@ -4,12 +4,11 @@ kind: ConfigMap
 metadata:
   name: ronin-frontend-configs
 data:
-  VITE_ENVIRONMENT: development
-  VITE_AMAZON_REDIRECT_URL: https://dev.${SECRET_DOMAIN}
+  AMAZON_REDIRECT_URL: https://dev.${SECRET_DOMAIN}
   AMAZON_REDIRECT_URI: https://dev.${SECRET_DOMAIN}
   NODE_ENV: development
   DATABASE_ENABLE_LOGGING: "false"
-  VITE_BETTER_AUTH_URL: https://dev.${SECRET_DOMAIN}
+  BETTER_AUTH_URL: https://dev.${SECRET_DOMAIN}
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -22,7 +21,7 @@ spec:
   target:
     name: ronin-frontend-secrets
   data:
-    - secretKey: VITE_AMAZON_APP_ID
+    - secretKey: AMAZON_APP_ID
       remoteRef:
         key: AMAZON_SECRETS
         property: AMAZON_APP_ID
