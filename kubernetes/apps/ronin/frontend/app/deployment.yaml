@@ -48,7 +48,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: ronin-frontend-secrets
-                key: VITE_AMAZON_APP_ID
+                key: AMAZON_APP_ID
           - name: AMAZON_CLIENT_ID
             valueFrom:
               secretKeyRef:
