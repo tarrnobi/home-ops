@@ -20,6 +20,10 @@ spec:
   target:
     name: ronin-frontend-secrets
   data:
+    - secretKey: ADMIN_API_KEY
+      remoteRef:
+        key: RONIN_MISC
+        property: FRONTEND_ADMIN_API_KEY
     - secretKey: AMAZON_APP_ID
       remoteRef:
         key: AMAZON_SECRETS
