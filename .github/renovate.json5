@@ -62,7 +62,8 @@
       "matchDatasources": ["docker"],
       "matchPackageNames": [
         "ghcr.io/ronin-cg/frontend", 
-        "ghcr.io/ronin-cg/db-migrations"
+        "ghcr.io/ronin-cg/db-migrations",
+        "ghcr.io/ronin-cg/forecast-orchestrator"
       ],
       "versioning": "docker",
       "automerge": true,
