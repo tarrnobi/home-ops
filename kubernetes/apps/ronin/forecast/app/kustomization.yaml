@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - ./ghcr-secret.yaml
   - ./config.yaml
-  - ./deployment.yaml
   - ./rbac.yaml
+  - ./deployment.yaml

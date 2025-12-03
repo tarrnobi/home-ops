@@ -1,3 +1,9 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ronin-forecast-orchestrator-account
+  namespace: ronin
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
