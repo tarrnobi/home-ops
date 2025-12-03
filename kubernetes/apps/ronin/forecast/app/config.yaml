@@ -18,10 +18,10 @@ data:
   INVENTORY_DB_USER: app
   INVENTORY_DB_NAME: app
   # Datalake DB Configs
-  DATALAKE_DB_HOST: datalake-db-rw.database
-  DATALAKE_DB_PORT: "5432"
-  DATALAKE_DB_USER: app
-  DATALAKE_DB_NAME: app
+  LAKE_DB_HOST: datalake-db-rw.database
+  LAKE_DB_PORT: "5432"
+  LAKE_DB_USER: app
+  LAKE_DB_NAME: app
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
