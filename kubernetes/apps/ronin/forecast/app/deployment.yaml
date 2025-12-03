@@ -29,10 +29,10 @@ spec:
             limits:
               memory: "256Mi"
               cpu: "500m"
-          livenessProbe:
-            exec:
-              command: ["pgrep", "node"]
-            periodSeconds: 30
+          # livenessProbe:
+          #   exec:
+          #     command: ["pgrep", "node"]
+          #   periodSeconds: 30
           env:
             - name: API_KEY
               valueFrom:
