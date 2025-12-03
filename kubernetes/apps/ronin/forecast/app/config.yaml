@@ -53,5 +53,5 @@ spec:
         property: INVENTORY_DB_PASSWORD
     - secretKey: LAKE_DB_PASSWORD
       remoteRef:
-        key: DATABASE_SECRETS
+        key: FORECAST_SECRETS
         property: LAKE_DB_PASSWORD
