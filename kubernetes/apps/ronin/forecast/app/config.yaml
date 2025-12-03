@@ -1,0 +1,57 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ronin-forecast-configs
+data:
+  API_ENDPOINT_URL: https://dev.${SECRET_DOMAIN}
+  MAX_CONCURRENT_JOBS: "1"
+  POLL_INTERVAL_MS: "15000"
+  WORKER_IMAGE_NAME: ghcr.io/ronin-cg/forecast-service:sha-d4213f1
+  WORKER_CONTAINER_NAME: forecast-worker
+  WORKER_MEMORY_LIMIT: "2048"
+  WORKER_CPU_LIMIT: "1"
+  AWS_REGION: eu-west-2
+  # Inventory DB Configs
+  INVENTORY_DB_HOST: inventory-db-rw.database
+  INVENTORY_DB_PORT: "5432"
+  INVENTORY_DB_USER: app
+  INVENTORY_DB_NAME: app
+  # Datalake DB Configs
+  DATALAKE_DB_HOST: datalake-db-rw.database
+  DATALAKE_DB_PORT: "5432"
+  DATALAKE_DB_USER: app
+  DATALAKE_DB_NAME: app
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: ronin-forecast-secrets
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: ops-store
+  target:
+    name: ronin-forecast-secrets
+  data:
+    - secretKey: API_KEY
+      remoteRef:
+        key: FORECAST_SECRETS
+        property: FRONTEND_API_KEY
+    - secretKey: AWS_ACCESS_KEY_ID
+      remoteRef:
+        key: FORECAST_SECRETS
+        property: AWS_ACCESS_KEY_ID
+    - secretKey: AWS_SECRET_ACCESS_KEY
+      remoteRef:
+        key: FORECAST_SECRETS
+        property: AWS_SECRET_ACCESS_KEY
+    # Inventory DB Configs
+    - secretKey: INVENTORY_DB_PASSWORD
+      remoteRef:
+        key: FORECAST_SECRETS
+        property: INVENTORY_DB_PASSWORD
+    - secretKey: LAKE_DB_PASSWORD
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: LAKE_DB_PASSWORD

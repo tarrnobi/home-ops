@@ -1,0 +1,66 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ronin-forecast
+  labels:
+    app.kubernetes.io/name: ronin-forecast
+    app.kubernetes.io/instance: ronin-forecast
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ronin-forecast
+      app.kubernetes.io/instance: ronin-forecast
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ronin-forecast
+        app.kubernetes.io/instance: ronin-forecast
+    spec:
+      containers:
+        - name: forecast-orchestrator
+          image: ghcr.io/ronin-cg/forecast-orchestrator:1.0.15
+          command: ["npm", "run", "start-k8s"]
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          livenessProbe:
+            exec:
+              command: ["pgrep", "node"]
+            periodSeconds: 30
+          env:
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ronin-forecast-secrets
+                  key: API_KEY
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ronin-forecast-secrets
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ronin-forecast-secrets
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: INVENTORY_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ronin-forecast-secrets
+                  key: INVENTORY_DB_PASSWORD
+            - name: LAKE_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ronin-forecast-secrets
+                  key: LAKE_DB_PASSWORD
+          envFrom:
+            - configMapRef:
+                name: ronin-forecast-configs
+      imagePullSecrets:
+        - name: ghcr-login-secret
