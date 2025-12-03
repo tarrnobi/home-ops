@@ -9,7 +9,7 @@ data:
   DATABASE_ENABLE_LOGGING: "false"
   BETTER_AUTH_URL: https://dev.${SECRET_DOMAIN}
 ---
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: ronin-frontend-secrets
