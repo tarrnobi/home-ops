@@ -23,7 +23,7 @@ data:
   DATALAKE_DB_USER: app
   DATALAKE_DB_NAME: app
 ---
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: ronin-forecast-secrets
