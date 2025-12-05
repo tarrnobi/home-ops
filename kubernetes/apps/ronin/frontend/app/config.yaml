@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: ronin-frontend-configs
 data:
-  AMAZON_REDIRECT_URI: https://dev.${SECRET_DOMAIN}
+  AMAZON_REDIRECT_URI: dev.${SECRET_DOMAIN}
   NODE_ENV: development
   DATABASE_ENABLE_LOGGING: "false"
   BETTER_AUTH_URL: https://dev.${SECRET_DOMAIN}
