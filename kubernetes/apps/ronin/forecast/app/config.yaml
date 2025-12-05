@@ -7,7 +7,7 @@ data:
   API_ENDPOINT_URL: https://dev.${SECRET_DOMAIN}
   MAX_CONCURRENT_JOBS: "1"
   POLL_INTERVAL_MS: "15000"
-  WORKER_IMAGE_NAME: ghcr.io/ronin-cg/forecast-service:sha-d4213f1
+  WORKER_IMAGE_NAME: ghcr.io/ronin-cg/forecast-service:1.0.19
   WORKER_CONTAINER_NAME: forecast-worker
   WORKER_MEMORY_LIMIT: "2048"
   WORKER_CPU_LIMIT: "1"
