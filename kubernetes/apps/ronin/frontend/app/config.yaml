@@ -8,6 +8,7 @@ data:
   NODE_ENV: development
   DATABASE_ENABLE_LOGGING: "false"
   BETTER_AUTH_URL: https://dev.${SECRET_DOMAIN}
+  AWS_DEFAULT_REGION: eu-west-2
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -52,3 +53,11 @@ spec:
       remoteRef:
         key: DATABASE_SECRETS
         property: LAKE_DB
+    - secretKey: AWS_ACCESS_KEY_ID
+      remoteRef:
+        key: FRONTEND_SECRETS
+        property: AWS_ACCESS_KEY_ID
+    - secretKey: AWS_SECRET_ACCESS_KEY
+      remoteRef:
+        key: FRONTEND_SECRETS
+        property: AWS_SECRET_ACCESS_KEY
