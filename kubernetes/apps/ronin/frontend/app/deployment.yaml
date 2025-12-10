@@ -84,6 +84,16 @@ spec:
               secretKeyRef:
                 name: ronin-frontend-secrets
                 key: LAKE_DATABASE_URL
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: AWS_ACCESS_KEY_ID
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: AWS_SECRET_ACCESS_KEY
         envFrom:
           - configMapRef:
               name: ronin-frontend-configs
