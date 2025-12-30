@@ -10,7 +10,7 @@ data:
   BETTER_AUTH_URL: https://dev.${SECRET_DOMAIN}
   AWS_DEFAULT_REGION: eu-west-2
 ---
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: ronin-frontend-secrets
