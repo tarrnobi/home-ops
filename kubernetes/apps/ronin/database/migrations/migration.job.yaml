@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: ronin-db-migrations
-        image: ghcr.io/ronin-cg/db-migrations:1.0.14
+        image: ghcr.io/ronin-cg/db-migrations:1.0.26
         env:
           # TODO: Add Auth, lake, app db secrets here
           - name: APP_DATABASE_URL
