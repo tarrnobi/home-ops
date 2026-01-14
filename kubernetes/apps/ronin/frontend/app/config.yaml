@@ -9,6 +9,9 @@ data:
   DATABASE_ENABLE_LOGGING: "false"
   BETTER_AUTH_URL: https://dev.${SECRET_DOMAIN}
   AWS_DEFAULT_REGION: eu-west-2
+  EMAIL_HEADER_URL: https://dev.${SECRET_DOMAIN}/email-header.png
+  WEBSITE_URL: https://dev.${SECRET_DOMAIN}
+  EMAIL_FROM_ADDRESS: "Ronin <support@app.roninds.co.uk>"
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -61,3 +64,7 @@ spec:
       remoteRef:
         key: FRONTEND_SECRETS
         property: AWS_SECRET_ACCESS_KEY
+    - secretKey: RESEND_API_KEY
+      remoteRef:
+        key: FRONTEND_SECRETS
+        property: RESEND_API_KEY
