@@ -94,6 +94,11 @@ spec:
               secretKeyRef:
                 name: ronin-frontend-secrets
                 key: AWS_SECRET_ACCESS_KEY
+          - name: RESEND_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: RESEND_API_KEY
         envFrom:
           - configMapRef:
               name: ronin-frontend-configs
