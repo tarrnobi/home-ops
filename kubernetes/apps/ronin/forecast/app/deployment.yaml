@@ -20,7 +20,7 @@ spec:
       serviceAccountName: ronin-forecast-orchestrator-account
       containers:
         - name: forecast-orchestrator
-          image: ghcr.io/ronin-cg/forecast-orchestrator:1.0.33
+          image: ghcr.io/ronin-cg/forecast-orchestrator:1.0.34
           command: ["npm", "run", "start-k8s"]
           imagePullPolicy: IfNotPresent
           resources:
