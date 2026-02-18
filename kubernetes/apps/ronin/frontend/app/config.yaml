@@ -13,7 +13,7 @@ data:
   WEBSITE_URL: https://dev.${SECRET_DOMAIN}
   EMAIL_FROM_ADDRESS: "Ronin <support@app.roninds.co.uk>"
 ---
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: ronin-frontend-secrets
