@@ -12,6 +12,8 @@ data:
   EMAIL_HEADER_URL: https://dev.${SECRET_DOMAIN}/email-header.png
   WEBSITE_URL: https://dev.${SECRET_DOMAIN}
   EMAIL_FROM_ADDRESS: "Ronin <support@app.roninds.co.uk>"
+  S3_TEMP_FILE_PREFIX: "temp_files"
+  S3_BUCKET_NAME: "ronin-datalake-dev"
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -56,6 +58,10 @@ spec:
       remoteRef:
         key: DATABASE_SECRETS
         property: LAKE_DB
+    - secretKey: PGBOSS_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: RONIN_DB
     - secretKey: AWS_ACCESS_KEY_ID
       remoteRef:
         key: FRONTEND_SECRETS

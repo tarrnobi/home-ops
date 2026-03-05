@@ -6,3 +6,4 @@ resources:
   - ./database/ks.yaml
   - ./frontend/ks.yaml
   - ./forecast/ks.yaml
+  - ./jobrunner/ks.yaml
