@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ronin-jobrunner-configs
+data:
+  DATABASE_ENABLE_LOGGING: "false"
+  FBA_REPORTS_BUCKET_NAME: "ronin-datalake-dev"
+  AWS_DEFAULT_REGION: "eu-west-2"
+
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: ronin-jobrunner-secrets
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: ops-store
+  target:
+    name: ronin-jobrunner-secrets
+  data:
+    - secretKey: APP_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: RONIN_DB
+    - secretKey: LAKE_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: LAKE_DB
+    - secretKey: PGBOSS_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: RONIN_DB
+    - secretKey: AWS_ACCESS_KEY_ID
+      remoteRef:
+        key: AWS_SECRETS
+        property: AWS_ACCESS_KEY_ID
+    - secretKey: AWS_SECRET_ACCESS_KEY
+      remoteRef:
+        key: AWS_SECRETS
+        property: AWS_SECRET_ACCESS_KEY
