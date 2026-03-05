@@ -34,9 +34,9 @@ spec:
         property: RONIN_DB
     - secretKey: AWS_ACCESS_KEY_ID
       remoteRef:
-        key: AWS_SECRETS
+        key: AMAZON_SECRETS
         property: AWS_ACCESS_KEY_ID
     - secretKey: AWS_SECRET_ACCESS_KEY
       remoteRef:
-        key: AWS_SECRETS
+        key: AMAZON_SECRETS
         property: AWS_SECRET_ACCESS_KEY
