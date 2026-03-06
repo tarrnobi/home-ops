@@ -84,6 +84,11 @@ spec:
               secretKeyRef:
                 name: ronin-frontend-secrets
                 key: LAKE_DATABASE_URL
+          - name: PGBOSS_DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: ronin-frontend-secrets
+                key: PGBOSS_DATABASE_URL
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
               secretKeyRef:
