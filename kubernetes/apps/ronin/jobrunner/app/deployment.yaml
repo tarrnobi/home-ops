@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: ronin-jobrunner
-        image: ghcr.io/ronin-cg/jobrunner:1.0.43
+        image: ghcr.io/ronin-cg/jobrunner:1.0.44
         imagePullPolicy: IfNotPresent
         resources:
           requests:
