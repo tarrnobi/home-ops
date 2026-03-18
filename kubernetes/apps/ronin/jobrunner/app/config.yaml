@@ -7,7 +7,7 @@ data:
   DATABASE_ENABLE_LOGGING: "false"
   FBA_REPORTS_BUCKET_NAME: "ronin-datalake-dev"
   AWS_DEFAULT_REGION: "eu-west-2"
-
+  FORECAST_SCHEDULE_SYNC_ENDPOINT: https://dev.${SECRET_DOMAIN}/api/forecast/schedules/checkAndQueueRuns
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -40,3 +40,7 @@ spec:
       remoteRef:
         key: AMAZON_SECRETS
         property: AWS_SECRET_ACCESS_KEY
+    - secretKey: FRONTEND_ADMIN_API_KEY
+      remoteRef:
+        key: RONIN_MISC
+        property: FRONTEND_ADMIN_API_KEY
