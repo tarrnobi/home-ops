@@ -54,6 +54,11 @@ spec:
             secretKeyRef:
               name: ronin-jobrunner-secrets
               key: AWS_SECRET_ACCESS_KEY
+        - name: PORTAL_ADMIN_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ronin-jobrunner-secrets
+              key: FRONTEND_ADMIN_API_KEY
         envFrom:
         - configMapRef:
             name: ronin-jobrunner-configs
