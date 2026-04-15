@@ -27,3 +27,4 @@ wiki
 decrypted.yaml
 
 kubeconfig*
+.logs
