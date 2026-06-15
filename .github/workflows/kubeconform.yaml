@@ -9,7 +9,7 @@ on:
 
 env:
   KUBERNETES_DIR: ./kubernetes
-
+  HOMEBREW_NO_SANDBOX_LINUX: 1
 jobs:
   kubeconform:
     name: Kubeconform
@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@main
 
       - name: Setup Workflow Tools
         run: brew install fluxcd/tap/flux kubeconform kustomize
