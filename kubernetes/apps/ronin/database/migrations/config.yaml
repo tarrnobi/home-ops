@@ -22,3 +22,7 @@ spec:
       remoteRef:
         key: DATABASE_SECRETS
         property: LAKE_DB
+    - secretKey: PGBOSS_DATABASE_URL
+      remoteRef:
+        key: DATABASE_SECRETS
+        property: RONIN_DB
