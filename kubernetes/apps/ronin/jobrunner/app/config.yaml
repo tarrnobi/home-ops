@@ -10,7 +10,7 @@ data:
   AWS_DEFAULT_REGION: "eu-west-2"
   FORECAST_SCHEDULE_SYNC_ENDPOINT: https://dev.${SECRET_DOMAIN}/api/forecast/schedules/checkAndQueueRuns
 ---
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: ronin-jobrunner-secrets

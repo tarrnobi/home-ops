@@ -26,7 +26,7 @@ data:
   # Other Settings
   K8S_JOB_NAMESPACE: ronin
 ---
-apiVersion: external-secrets.io/v1beta1
+apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: ronin-forecast-secrets
